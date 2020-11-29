@@ -11,6 +11,13 @@ To get the duration from Korean text-mel datset, we can use [Montreal Forced Ali
 * Word-phoneme dictionary applied to Korean phoneme conversion and syllable decomposition (초성, 중성, 종성 분리)
 
 
+# Install dependencies
+Install dependencies via following command:
+```
+	pip install -r requirements.txt
+```
+
+
 # How-to-use
 
 Just run following command:
