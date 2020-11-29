@@ -7,7 +7,7 @@ Recently, the most major issue in Deep-learning based speech synthesis is to est
 
 To get the duration from Korean text-mel datset, we can use [Montreal Forced Aligner](https://github.com/MontrealCorpusTools/Montreal-Forced-Aligner)(MFA) as described in [FastSpeech2](https://arxiv.org/pdf/2006.04558.pdf) paper. However, we must do some hassles. Therefore, this repository offers some references and conviniences to reduce that hassels. Specifically, this repository provides followings:
 
-* <sample.lab, sample.wav> paired structure in ``results/<dataset_name>/wavs_with_lab/`` directory
+* <sample.lab, sample.wav> paired structure in ``results/<dataset_name>/<wavs_with_lab>/`` directory
 * Word-phoneme dictionary applied to Korean phoneme conversion and syllable decomposition (초성, 중성, 종성 분리)
 
 
@@ -19,7 +19,7 @@ Just run following command:
 ```
 After running, see the ``results/<dataset_name>/`` directory to check the generated word-phoneme dictionary and <sample.lab, sample.wav> paired structure.
 
-To train the Korean MFA model, see this [docs](https://github.com/Kyubyong/g2pK) and just point the generated dictionary and path to ``results/<datset_name>/<wav\_with\_labs\_dataset>``.
+To train the Korean MFA model, see this [docs](https://github.com/Kyubyong/g2pK) and just point the generated dictionary and path to ``results/<datset_name>/<wav_with_labs>/``.
 
 # Notes
 * The result of training [FastSpeech2](https://arxiv.org/pdf/2006.04558.pdf) with duration(TextGrid) extracted from pretrained Korean G2P and acoustic model is not good. See the [issues](https://github.com/HGU-DLLAB/Korean-FastSpeech2-Pytorch/issues/3#issuecomment-731979268) for details.
