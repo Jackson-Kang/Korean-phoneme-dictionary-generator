@@ -31,12 +31,12 @@ class EmotionTTS_OpenDB():
 
 	def prepare_mfa_training(self):
 
-		emotional_base_path = get_path(self.source_dataset_path, "Emotional", "**", "**")
+		emotional_base_path = get_path(self.source_dataset_path, "*emotional", "**")
 		emotional_speaker_list = [speaker.split("/")[-1] for speaker in glob.glob(emotional_base_path) if not "." in speaker]
 		emotional_source_transcript_path = glob.glob(get_path(emotional_base_path, "transcript", "*.txt"))
 		emotional_source_wav_path = glob.glob(get_path(emotional_base_path, "wav", "*.wav"))
-		emotional_filepath = list(zip(emotional_source_transcript_path, emotional_source_wav_path))
-		
+		emotional_filepath = list(zip(emotional_source_transcript_path, emotional_source_wav_path))	
+	
 		[[create_dir(self.savepath, speaker), create_dir(self.savepath_wavs, speaker)] for speaker in emotional_speaker_list]
 		speaker_dict = dict([(speaker, idx) for idx, speaker in enumerate(emotional_speaker_list)])
 		num_of_speakers = len(emotional_speaker_list)

@@ -14,7 +14,7 @@ To get the duration from Korean text-mel datset, we can use [Montreal Forced Ali
 # Install dependencies
 Install dependencies via following command:
 ```
-	pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 
@@ -22,7 +22,7 @@ Install dependencies via following command:
 
 Just run following command:
 ```
-	python main.py
+python main.py
 ```
 After running, see the ``results/<dataset_name>/`` directory to check the generated word-phoneme dictionary and <sample.lab, sample.wav> paired structure.
 

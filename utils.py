@@ -40,7 +40,7 @@ def create_phoneme_dictionary(source_path):
 	phoneme_dict = {}
 	for lab_file in tqdm(glob(get_path(source_path, "**", "*.lab"))):
 		sentence = read_file(lab_file)
-		phoneme_sentence = g2p(sentence)			
+		phoneme_sentence = h2j(g2p(sentence))
 
 		word_list = sentence.split(" ")
 		phoneme_list = h2j(phoneme_sentence).split(" ")
