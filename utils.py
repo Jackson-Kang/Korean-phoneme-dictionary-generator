@@ -40,16 +40,13 @@ def create_phoneme_dictionary(source_path):
 	phoneme_dict = {}
 	for lab_file in tqdm(glob(get_path(source_path, "**", "*.lab"))):
 		sentence = read_file(lab_file)
-		phoneme_sentence = h2j(g2p(sentence))
-
 		word_list = sentence.split(" ")
-		phoneme_list = h2j(phoneme_sentence).split(" ")
+		phoneme_list = h2j(g2p(sentence)).split(" ")
 
-		for word_phoneme_tuple in list(zip(word_list, phoneme_list)):
-			word, phoneme_word = word_phoneme_tuple
-			if not word  in phoneme_dict.keys():
-				phoneme_dict[word] = phoneme_word
-	
+		for idx, word in enumerate(word_list):
+			if not word in phoneme_dict.keys():
+				phoneme_dict[word] = " ".join(phoneme_list[idx])
+
 	return phoneme_dict
 
 
