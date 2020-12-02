@@ -1,15 +1,16 @@
 from utils import copy_file, get_path, create_dir, do_multiprocessing
-from utils import create_phoneme_dictionary, write_phoneme_dictionary, write_multispeaker_emotion_metadata
+from utils import create_phoneme_dictionary, write_dictionary, write_multispeaker_emotion_metadata
 
 import glob
 
 class EmotionTTS_OpenDB():
 
-	def __init__(self, source_dataset_path, savepath, savepath_wavs, metadata_savepath, phoneme_dictionary_savepath, num_threads):
+	def __init__(self, source_dataset_path, savepath, savepath_wavs, metadata_savepath, grapheme_dictionary_savepath, phoneme_dictionary_savepath, num_threads):
 		self.source_dataset_path = source_dataset_path
 		self.savepath = savepath
 		self.savepath_wavs = savepath_wavs
 		self.metadata_savepath = metadata_savepath
+		self.grapheme_dictionary_savepath = grapheme_dictionary_savepath
 		self.phoneme_dictionary_savepath = phoneme_dictionary_savepath
 		self.num_threads = num_threads
 
@@ -45,9 +46,10 @@ class EmotionTTS_OpenDB():
 		do_multiprocessing(self.job, emotional_filepath, num_jobs=self.num_threads)
 
 		print("\n[LOG] create phoneme dictionary...")
-		phoneme_dictionary = create_phoneme_dictionary(self.savepath)	
+		grapheme_dictionary, phoneme_dictionary = create_phoneme_dictionary(self.savepath)	
 
-		print("\n[LOG] write phoneme dictionary and metadata...")	
-		write_phoneme_dictionary(savepath=self.phoneme_dictionary_savepath, phoneme_dictionary=phoneme_dictionary)
+		print("\n[LOG] write grapheme and phoneme dictionary and metadata...")	
+		write_dictionary(savepath=self.grapheme_dictionary_savepath, dictionary=grapheme_dictionary)
+		write_dictionary(savepath=self.phoneme_dictionary_savepath, dictionary=phoneme_dictionary)
 		write_multispeaker_emotion_metadata(source_path=self.savepath, savepath=self.metadata_savepath, speaker_dict=speaker_dict)
 		print("[LOG] done!\n")

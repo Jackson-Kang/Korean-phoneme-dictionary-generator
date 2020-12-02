@@ -37,20 +37,24 @@ def read_file(source_path):
 	return content
 
 def create_phoneme_dictionary(source_path):
-	phoneme_dict = {}
+	grapheme_dict, phoneme_dict = {}, {}
 	for lab_file in tqdm(glob(get_path(source_path, "**", "*.lab"))):
 		sentence = read_file(lab_file)
 		word_list = sentence.split(" ")
+		grapheme_list = h2j(sentence).split(" ")
 		phoneme_list = h2j(g2p(sentence)).split(" ")
 
 		for idx, word in enumerate(word_list):
+			if not word in grapheme_dict.keys():
+				grapheme_dict[word] = " ".join(grapheme_list[idx])
+
 			if not word in phoneme_dict.keys():
 				phoneme_dict[word] = " ".join(phoneme_list[idx])
 
-	return phoneme_dict
+	return grapheme_dict, phoneme_dict
 
 
-def write_phoneme_dictionary(savepath, phoneme_dictionary):
+def write_dictionary(savepath, dictionary):
 	"""
 		input-dict format
 			key: word of transcript delimited by <space> (e.g. 국물이)	
@@ -59,8 +63,8 @@ def write_phoneme_dictionary(savepath, phoneme_dictionary):
 	"""
 
 	with open(savepath, "w", encoding="utf-8") as f:
-		for key in phoneme_dictionary.keys():
-			content = "{}\t{}\n".format(key, phoneme_dictionary[key])
+		for key in dictionary.keys():
+			content = "{}\t{}\n".format(key, dictionary[key])
 			f.write(content)
 
 
