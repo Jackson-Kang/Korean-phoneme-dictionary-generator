@@ -48,5 +48,4 @@ class HGU_Speech():
 		print("\n[LOG] write grapheme and phoneme dictionary and metadata...")	
 		write_dictionary(savepath=self.grapheme_dictionary_savepath, dictionary=grapheme_dictionary)
 		write_dictionary(savepath=self.phoneme_dictionary_savepath, dictionary=phoneme_dictionary)
-		write_multispeaker_emotion_metadata(source_path=self.savepath, savepath=self.metadata_savepath, speaker_dict=speaker_dict)
 		print("[LOG] done!\n")
