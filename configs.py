@@ -1,6 +1,6 @@
 # path configurations
-dataset_name = "emotiontts_open_db"
-source_dataset_path = "/home/minsu/dataset/emotiontts_open_db/"
+dataset_name = "HGU_speech_dataset_v1.0"
+source_dataset_path = "/home/minsu/dataset/HGU_speech_dataset_v1.0"
 
 # data save configurations
 savedir = "results"

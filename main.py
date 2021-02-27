@@ -1,4 +1,4 @@
-from dataset import emotiontts_open_db
+from dataset import emotiontts_open_db, HGU_speech_dataset
 from utils import create_dir, get_path
 
 import configs as cfg
@@ -23,7 +23,16 @@ def main():
 						grapheme_dictionary_savepath = grapheme_dict_savepath,
 						phoneme_dictionary_savepath = phoneme_dict_savepath,
 						num_threads=cfg.NUM_THREADS)
-
+	elif "HGU" in cfg.dataset_name:
+		instance = HGU_speech_dataset.HGU_Speech(
+						source_dataset_path = cfg.source_dataset_path,
+						savepath = savepath,
+						savepath_wavs = savepath_wavs,
+						metadata_savepath = metadata_savepath,
+						grapheme_dictionary_savepath = grapheme_dict_savepath,
+						phoneme_dictionary_savepath = phoneme_dict_savepath,
+						num_threads=cfg.NUM_THREADS)
+	
 	else:
 		print("[LOG] No dataset named {}".format(cfg.dataset_name))
 

@@ -27,9 +27,7 @@ def create_dir(*args):
         return path
 
 def copy_file(source_file, dest_file):
-	if not os.path.exists(dest_file):
-		os.system("cp {} {}".format(source_file, dest_file))
-
+	os.system("cp {} {}".format(source_file, dest_file))
 
 def read_file(source_path):
 	with open(source_path, mode="r", encoding="utf-8-sig") as f:
@@ -52,6 +50,15 @@ def create_phoneme_dictionary(source_path):
 				phoneme_dict[word] = " ".join(phoneme_list[idx])
 
 	return grapheme_dict, phoneme_dict
+
+def read_meta(path):
+	with open(path, 'r', encoding='utf-8') as f:
+		lines = f.readlines()
+	return lines
+
+def write_file(savepath, transcript):
+	with open(savepath, 'w') as f:
+		f.write(transcript)
 
 
 def write_dictionary(savepath, dictionary):
