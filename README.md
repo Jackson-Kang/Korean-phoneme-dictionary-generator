@@ -26,7 +26,7 @@ python main.py
 ```
 After running, see the ``results/<dataset_name>/`` directory to check the generated word-phoneme dictionary and <sample.lab, sample.wav> paired structure.
 
-To train the Korean MFA model, see this [docs](https://github.com/Kyubyong/g2pK) and just point the generated dictionary and path to ``results/<datset_name>/<wav_with_labs>/``.
+To train the Korean MFA model, see this [docs](https://montreal-forced-aligner.readthedocs.io/en/stable/) and just point the generated dictionary and path to ``results/<datset_name>/<wav_with_labs>/``.
 
 # Notes
 * The result of training [FastSpeech2](https://arxiv.org/pdf/2006.04558.pdf) with duration(TextGrid) extracted from pretrained Korean G2P and acoustic model is not good. See the [issues](https://github.com/HGU-DLLAB/Korean-FastSpeech2-Pytorch/issues/3#issuecomment-731979268) for details.
